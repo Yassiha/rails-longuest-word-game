@@ -1,0 +1,21 @@
+
+<h1>The Longuest Word V2</h1>
+<div class="letters-box">
+  <% @value.each do |letter| %>
+    <div class="letter">
+      <%= letter %>
+    </div>
+  <% end %>
+</div>
+
+<div class="form">
+  <form action="/score" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :value, @value %>
+  <input type="text" name="answer" placeholder="Your longuest word">
+  <input type="submit">
+</form>
+</div>
+
+
+
