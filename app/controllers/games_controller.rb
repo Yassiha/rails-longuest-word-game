@@ -22,12 +22,13 @@ class GamesController < ApplicationController
       elsif check_letters == true && check_word == false
         'Nice try but this word do not exist!'
       else
-        'Faux! Try again!'
+        'Faux!'
       end
   end
 
   def word_checker(word)
-    url = "https://wagon-dictionary.herokuapp.com/#{word}"
+    clean_word = word.gsub(/[^0-9A-Za-z]/, '')
+    url = "https://wagon-dictionary.herokuapp.com/#{clean_word}"
     serialized = open(url).read
     JSON.parse(serialized)['found']
   end
